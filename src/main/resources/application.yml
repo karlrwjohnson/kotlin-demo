@@ -1,0 +1,31 @@
+server:
+  port: 8088
+  servlet:
+    context-path: /demo
+
+spring:
+  application:
+    name: demo
+
+  datasource:
+    # Use an in-memory H2 database
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    username: sa
+    password: sa
+
+    # Tell Hibernate to generate database tables for entities
+    # Hibernate will also use the file import.sql to add data to these tables
+    hibernate:
+      ddl-auto: create-drop # This doesn't work...!
+
+  jpa:
+    properties:
+      # generate-ddl: true
+      hibernate:
+        hbm2ddl:
+          # When Hibernate reads import.sql, it should allow commands to span multiple lines.
+          import_files_sql_extractor: org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
+
+  graphql:
+    path: /graphql

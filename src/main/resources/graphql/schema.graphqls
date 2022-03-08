@@ -1,0 +1,13 @@
+type Query {
+    pizzas: [Pizza!]
+    test: Boolean
+    testAsync(delayMs: Int): Boolean
+}
+
+type Pizza {
+    id: ID!
+    name: String!
+    price: USD!
+}
+
+scalar USD
